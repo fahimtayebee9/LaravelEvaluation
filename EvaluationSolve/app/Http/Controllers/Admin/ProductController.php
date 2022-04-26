@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
-use App\Models\SubCategory;
-use App\Models\Category;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -47,16 +46,11 @@ class ProductController extends Controller
             $product->price        = $request->price;
 
             if ($request->hasFile('thumbnail')) {
-                // Delete old image
-                if(File::exists(public_path('storage/uploads/products/' . $projectObj->thumbnail))){
-                    File::delete(public_path('storage/uploads/products/' . $projectObj->thumbnail));
-                }
-
                 $image = $request->file('thumbnail');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
                 $location = public_path('storage/uploads/products/' . $filename);
                 Image::make($image)->save($location);
-                $projectObj->thumbnail = $filename;
+                $product->thumbnail = $filename;
             }
 
             $product->save();
@@ -95,8 +89,8 @@ class ProductController extends Controller
 
             if ($request->hasFile('thumbnail')) {
                 // Delete old image
-                if(File::exists(public_path('storage/uploads/products/' . $projectObj->thumbnail))){
-                    File::delete(public_path('storage/uploads/products/' . $projectObj->thumbnail));
+                if(File::exists(public_path('storage/uploads/products/' . $productObj->thumbnail))){
+                    File::delete(public_path('storage/uploads/products/' . $productObj->thumbnail));
                 }
 
                 $image = $request->file('thumbnail');
@@ -106,7 +100,7 @@ class ProductController extends Controller
                 $productObj->thumbnail = $filename;
             }
             
-            $product->update();
+            $productObj->update();
 
             return redirect()->route('product.index')->with([
                 'status' => 'success',
