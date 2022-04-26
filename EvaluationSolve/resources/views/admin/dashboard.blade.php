@@ -1,6 +1,14 @@
-@extends('ftsadmin.layouts.app')
+@extends('admin.layouts.app')
 
 @section('body')
+    <div class="br-pagetitle">
+        <i class="icon ion-ios-home-outline"></i>
+        <div>
+            <h4>Dashboard</h4>
+            <p class="mg-b-0">Do bigger things with Bracket plus, the responsive bootstrap 4 admin template.</p>
+        </div>
+    </div>
+
     <div class="br-pagebody">
         <div class="row row-sm">
             <div class="col-sm-6 col-xl-6">
@@ -8,7 +16,8 @@
                     <div class="pd-x-20 pd-t-20 d-flex align-items-center">
                         <i class="ion ion-earth tx-60 lh-0 tx-white op-7"></i>
                         <div class="mg-l-20">
-                            <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total Categories
+                            <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total
+                                Categories
                             </p>
                             <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">{{ $categories->count() }}</p>
                         </div>
@@ -30,7 +39,7 @@
                             <p class="tx-10 tx-spacing-1 tx-mont tx-semibold tx-uppercase tx-white-8 mg-b-10">Total Products
                             </p>
                             <p class="tx-24 tx-white tx-lato tx-bold mg-b-0 lh-1">
-                                {{$products->count()}}
+                                {{ $products->count() }}
                             </p>
                         </div>
                     </div>

@@ -52,7 +52,27 @@
 
 <script>
     $(document).ready(function() {
-        $('#summernote').summernote({
+        $('#cat_description').summernote({
+            height: 150
+        });
+
+        $('#subcat_description').summernote({
+            height: 150
+        });
+
+        $('#subcat_description_edit').summernote({
+            height: 150
+        });
+
+        $('#cat_description_edit').summernote({
+            height: 150
+        });
+
+        $('#product_desc_edit').summernote({
+            height: 150
+        });
+
+        $('#product_desc').summernote({
             height: 150
         });
     });

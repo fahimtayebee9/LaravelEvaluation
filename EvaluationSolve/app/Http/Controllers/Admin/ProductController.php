@@ -8,6 +8,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use App\Models\Product;
+use App\Models\SubCategory;
 
 class ProductController extends Controller
 {
@@ -19,14 +20,14 @@ class ProductController extends Controller
         ]);
 
         $list_items = Product::all();
-        return view('admin.product.index', compact('list_items'));
+        $subcategories = SubCategory::all();
+        return view('admin.pages.products.index', compact('list_items', 'subcategories'));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'subcategory_id' => 'required|integer',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'price' => 'required|numeric',
@@ -55,7 +56,7 @@ class ProductController extends Controller
 
             $product->save();
 
-            return redirect()->route('product.index')->with([
+            return redirect()->route('products.index')->with([
                 'status' => 'success',
                 'message' => 'Product has been created.',
             ]);
@@ -66,13 +67,13 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'subcategory_id' => 'required|integer',
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'price' => 'required|numeric',
         ]);
 
         $productObj = Product::find($id);
+
+        // dd($request->all());
 
         if ($validator->fails()) {
             return response()->json([
@@ -81,7 +82,6 @@ class ProductController extends Controller
             ]);
         }
         else if($productObj){
-            $productObj               = new Product();
             $productObj->title        = $request->title;
             $productObj->description  = $request->description;
             $productObj->subcategory_id  = $request->subcategory_id;
@@ -102,7 +102,7 @@ class ProductController extends Controller
             
             $productObj->update();
 
-            return redirect()->route('product.index')->with([
+            return redirect()->route('products.index')->with([
                 'status' => 'success',
                 'message' => 'Product has been created.',
             ]);
@@ -121,13 +121,13 @@ class ProductController extends Controller
 
             $productObj->delete();
 
-            return redirect()->route('product.index')->with([
+            return redirect()->route('products.index')->with([
                 'status' => 'success',
                 'message' => 'Product has been deleted.',
             ]);
         }
 
-        return redirect()->route('product.index')->with([
+        return redirect()->route('products.index')->with([
             'status' => 'error',
             'message' => 'Product not found.',
         ]);

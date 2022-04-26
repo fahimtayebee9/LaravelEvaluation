@@ -20,14 +20,13 @@ class CategoryController extends Controller
         ]);
 
         $list_items = Category::all();
-        return view('admin.category.index', compact('list_items'));
+        return view('admin.pages.categories.index', compact('list_items'));
     }
 
     public function store(Request $request)
     {
         $validated = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
         ]);
 
         if ($validated->fails()) {
@@ -42,7 +41,7 @@ class CategoryController extends Controller
             $category->description  = $request->description;
             $category->save();
 
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'success',
                 'message' => 'Category has been created.',
             ]);
@@ -53,7 +52,6 @@ class CategoryController extends Controller
     {
         $validated = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
         ]);
 
         $categoryObj = Category::find($id);
@@ -69,13 +67,13 @@ class CategoryController extends Controller
             $categoryObj->description  = $request->description;
             $categoryObj->update();
 
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'success',
                 'message' => 'Category has been updated.',
             ]);
         }
         else{
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'error',
                 'message' => 'Category not found.',
             ]);
@@ -96,13 +94,13 @@ class CategoryController extends Controller
             
             $categoryObj->delete();
 
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'success',
                 'message' => 'Category has been deleted.',
             ]);
         }
         else{
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'error',
                 'message' => 'Category not found.',
             ]);

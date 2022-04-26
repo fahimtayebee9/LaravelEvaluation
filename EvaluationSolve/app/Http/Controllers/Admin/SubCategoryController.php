@@ -18,14 +18,13 @@ class SubCategoryController extends Controller
         ]);
 
         $list_items = Category::all();
-        return view('admin.category.index', compact('list_items'));
+        return view('admin.categories.index', compact('list_items'));
     }
 
     public function store(Request $request)
     {
         $validated = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'category_id' => 'required|integer',
         ]);
 
@@ -42,7 +41,7 @@ class SubCategoryController extends Controller
             $category->category_id  = $request->category_id;
             $category->save();
 
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'success',
                 'message' => 'Category has been created.',
             ]);
@@ -53,7 +52,6 @@ class SubCategoryController extends Controller
     {
         $validated = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'category_id' => 'required|integer',
         ]);
 
@@ -71,13 +69,13 @@ class SubCategoryController extends Controller
             $sub_categoryObj->category_id  = $request->category_id;
             $sub_categoryObj->update();
 
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'success',
                 'message' => 'Category has been updated.',
             ]);
         }
         else{
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'error',
                 'message' => 'Category not found.',
             ]);
@@ -86,18 +84,18 @@ class SubCategoryController extends Controller
 
     public function destroy($id)
     {
-        $sub_sub_categoryObj = SubCategory::find($id);
+        $sub_categoryObj = SubCategory::find($id);
+        dd($sub_categoryObj);
+        if($sub_categoryObj){
+            $sub_categoryObj->delete();
 
-        if($sub_sub_categoryObj){
-            $sub_sub_categoryObj->delete();
-
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'success',
                 'message' => 'Category has been deleted.',
             ]);
         }
         else{
-            return redirect()->route('category.index')->with([
+            return redirect()->route('categories.index')->with([
                 'status' => 'error',
                 'message' => 'Category not found.',
             ]);

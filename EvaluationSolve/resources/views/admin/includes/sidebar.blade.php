@@ -10,13 +10,13 @@
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="{{route('category.index')}}" class="br-menu-link {{ (session()->has('acive_menu') && session()->get('acive_menu') == 'category') ? 'active' : null }}">
+            <a href="{{route('categories.index')}}" class="br-menu-link {{ (session()->has('acive_menu') && session()->get('acive_menu') == 'category') ? 'active' : null }}">
                 <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
                 <span class="menu-item-label">Category Manager</span>
             </a>
         </li>
         <li class="br-menu-item">
-            <a href="{{route('product.index')}}" class="br-menu-link {{session()->has('acive_menu') && session()->get('acive_menu') == 'products' ? 'active' : null }}">
+            <a href="{{route('products.index')}}" class="br-menu-link {{session()->has('acive_menu') && session()->get('acive_menu') == 'products' ? 'active' : null }}">
                 <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
                 <span class="menu-item-label">Product Manager</span>
             </a>

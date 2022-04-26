@@ -15,32 +15,32 @@
         <nav class="nav">
             <div class="dropdown">
                 <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-                    <span class="logged-name hidden-md-down">{{auth()->user()->name}}</span>
-                    <img src="{{ (!is_null(auth()->user()->image)) ? 
+                    {{-- <span class="logged-name hidden-md-down">{{auth()->user()->name}}</span> --}}
+                    {{-- <img src="{{ (!is_null(auth()->user()->image)) ? 
                         asset('storage/uploads/users/' . auth()->user()->image) :
-                        asset('storage/uploads/users/profile.png') }}" class="wd-32 rounded-circle" alt="">
+                        asset('storage/uploads/users/profile.png') }}" class="wd-32 rounded-circle" alt=""> --}}
                     <span class="square-10 bg-success"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-header wd-250">
                     <div class="tx-center">
                         <a href="">
-                            <img src="{{ (!is_null(auth()->user()->image)) ? 
+                            {{-- <img src="{{ (!is_null(auth()->user()->image)) ? 
                                 asset('storage/uploads/users/' . auth()->user()->image) :
-                                asset('storage/uploads/users/profile.png') }}" class="wd-80 rounded-circle" alt=""></a>
-                        <h6 class="logged-fullname">{{auth()->user()->name}}</h6>
-                        <p>{{auth()->user()->email}}</p>
+                                asset('storage/uploads/users/profile.png') }}" class="wd-80 rounded-circle" alt=""></a> --}}
+                        {{-- <h6 class="logged-fullname">{{auth()->user()->name}}</h6> --}}
+                        {{-- <p>{{auth()->user()->email}}</p> --}}
                     </div>
                     <hr>
                     <ul class="list-unstyled user-profile-nav">
                         <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
                         <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
                         <li>
-                            <form action="{{ route('logout') }}" method="post">
+                            {{-- <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="formbtn">
                                     <i class="icon ion-power"></i> Sign Out
                                 </button>
-                            </form>
+                            </form> --}}
                         </li>
                     </ul>
                 </div><!-- dropdown-menu -->
