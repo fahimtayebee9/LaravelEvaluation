@@ -5,9 +5,20 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use Illuminate\Support\Facades\Auth;
 
-// , 'middleware' => 'auth'
-Route::group(['prefix' => 'admin'], function () {
+Auth::routes([
+    'register' => true,
+    'reset' => false,
+    'verify' => false,
+]);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [PageController::class, 'index'])->name('dashboard');
 
     Route::resource('products', ProductController::class, [ 'names' => [
@@ -31,3 +42,7 @@ Route::group(['prefix' => 'admin'], function () {
         'destroy' => 'subcategories.destroy',
     ]]);
 });
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

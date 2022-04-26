@@ -18,6 +18,10 @@
 <script src="{{ asset('storage/assets/lib/gmaps/gmaps.min.js') }}"></script>
 <script src="{{ asset('storage/assets/lib/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('storage/assets/lib/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ asset('storage/assets/lib/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('storage/assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js') }}"></script>
+<script src="{{ asset('storage/assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('storage/assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js') }}"></script>
 
 <script src="{{ asset('storage/assets/js/bracket.js') }}"></script>
 <script src="{{ asset('storage/assets/js/map.shiftworker.js') }}"></script>
@@ -41,7 +45,7 @@
                 $('body').addClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideUp();
             } else if (window.matchMedia('(min-width: 1300px)').matches && !$('body').hasClass(
-                'collapsed-menu')) {
+                    'collapsed-menu')) {
                 $('.menu-item-label,.menu-item-arrow').removeClass('op-lg-0-force d-lg-none');
                 $('body').removeClass('collapsed-menu');
                 $('.show-sub + .br-menu-sub').slideDown();
@@ -74,6 +78,15 @@
 
         $('#product_desc').summernote({
             height: 150
+        });
+
+        $('#productTable').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            }
         });
     });
 </script>

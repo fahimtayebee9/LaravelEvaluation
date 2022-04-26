@@ -96,19 +96,19 @@
 
     <div class="br-pagebody">
         <div class="br-section-wrapper">
-            <h6 class="br-section-label">{{ 'Categories' }}</h6>
+            <h6 class="br-section-label">{{ 'Products' }}</h6>
             <p class="br-section-text">{{ 'List of all categories' }}</p>
 
-            <div class="bd bd-gray-300 rounded table-responsive">
-                <table class="table mg-b-0">
+            <div class="table-wrapper">
+                <table id="productTable" class="table display responsive nowrap" style="width: 100%!important;">
                     <thead class="thead-colored thead-light">
                         <tr>
-                            <th scope="row" width="8%" class="text-center">#</th>
-                            <th scope="row" width="22%" class="text-center">Title</th>
-                            <th scope="row" width="20%" class="text-center">Category</th>
-                            <th scope="row" width="15%" class="text-center">Price</th>
-                            <th scope="row" width="25%" class="text-center">Description</th>
-                            <th scope="row" width="10%" class="text-center">Action</th>
+                            <th width="8%" class="text-center">#</th>
+                            <th  width="22%" class="text-center">Title</th>
+                            <th width="25%" class="text-center">Category</th>
+                            <th width="20%" class="text-center">Sub Category</th>
+                            <th width="15%" class="text-center">Price</th>
+                            <th width="10%" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -133,12 +133,10 @@
                                     {{ $item_dt->subcategory->title }}
                                 </td>
                                 <td>
-                                    Bdt. {{ $item_dt->price }}
+                                    {{ $item_dt->subcategory->category->title }}
                                 </td>
                                 <td>
-                                    @php
-                                        echo $item_dt->description;
-                                    @endphp
+                                    Bdt. {{ $item_dt->price }}
                                 </td>
                                 <td class="d-flex align-items-center justify-content-center">
                                     <a href="" class="btn btn-warning btn-sm" data-toggle="modal"

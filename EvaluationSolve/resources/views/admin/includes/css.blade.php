@@ -6,7 +6,8 @@
 <link href="{{asset('storage/assets/lib/summernote/summernote-bs4.css')}}" rel="stylesheet">
 <link href="{{asset('storage/assets/lib/ion-rangeslider/css/ion.rangeSlider.css')}}" rel="stylesheet">
 <link href="{{asset('storage/assets/lib/ion-rangeslider/css/ion.rangeSlider.skinFlat.css')}}" rel="stylesheet">
-
+<link href="{{ asset('storage/assets/lib/datatables.net-dt/css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('storage/assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <!-- Bracket CSS -->
 <link rel="stylesheet" href="{{asset('storage/assets/css/bracket.css')}}">
 
